@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
@@ -11,9 +12,17 @@ constructor(props){
     }
 }
 
+// Life cycle method
+componentDidMount() {
+    this.getEmployeeList();
+}
+
 // Get Employee List
 getEmployeeList= () => {
-
+    axios.get('/get/employee/list')
+        .then(function (response) {
+            console.log(response);
+        })
 }
 
 
