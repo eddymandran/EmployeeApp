@@ -5592,6 +5592,33 @@ var UpdateModal = /*#__PURE__*/function (_Component) {
         })
       });
     }
+  }], [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(props, current_state) {
+      var employeeUpdate = {
+        employeeName: null,
+        employeeSalary: null
+      }; // Updating data from input
+
+      if (current_state.employeeName && current_state.employeeName !== props.employeeData.currentEmployeeName) {
+        return null;
+      }
+
+      if (current_state.employeeSalary && current_state.employeeSalary !== props.employeeData.currentEmployeeSalary) {
+        return null;
+      } // Updating data from props Below.
+
+
+      if (current_state.employeeName !== props.employeeData.currentEmployeeName || current_state.employeeName === props.employeeData.currentEmployeeName) {
+        employeeUpdate.employeeName = props.employeeData.currentEmployeeName;
+      }
+
+      if (current_state.employeeSalary !== props.employeeData.currentEmployeeSalary || current_state.employeeSalary === props.employeeData.currentEmployeeSalary) {
+        employeeUpdate.employeeSalary = props.employeeData.currentEmployeeSalary;
+      }
+
+      return employeeUpdate;
+    }
   }]);
 
   return UpdateModal;
