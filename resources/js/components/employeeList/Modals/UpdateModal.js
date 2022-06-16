@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 
 class UpdateModal extends Component {
@@ -28,7 +29,7 @@ class UpdateModal extends Component {
         let employeeUpdate = {
             employeeName: null,
             employeeSalary: null,
-        }
+        } 
 
         // Updating data from input
         if (current_state.employeeName && (current_state.employeeName !== props.employeeData.currentEmployeeName)){
@@ -51,7 +52,14 @@ class UpdateModal extends Component {
     }
 
     updateEmployeeData = () => {
-
+        axios.post('/update/employee/data', {
+            employeeId: this.props.modalId,
+            employeeName : this.state.employeeName,
+            employeeSalary: this.state.employeeSalary,
+        }).then(() => {
+            //refresh the page
+            location.reload();
+        })
     }
 
     render() {
